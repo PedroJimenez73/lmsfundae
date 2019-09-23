@@ -1,0 +1,217 @@
+.card {
+    width: 360px;
+    margin: 1em;
+    border-radius: 5px;
+    background-color: white;
+    box-shadow: 0 0 13px 0 rgba(82,63,105,.05);
+    position: relative;
+
+    header {
+        padding: 0 1em;
+        @include flex(row, space-between, center);
+    }
+
+    & > img {
+        margin: 2em;
+    }
+
+    .icon-big {
+        margin: 40px auto;
+        display: block;
+        width: 30%;
+    }
+
+    footer {
+        width: 100%;
+        padding: 0 10px;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+    }
+}
+
+
+.card.list {
+
+    
+    width: calc(60% - 40px);
+    
+    h2 {
+        padding: 1em 0;
+    }
+
+    hr {
+        margin: 0;
+    } 
+
+    .fila {
+        margin: 0;
+        padding: 1em;
+        transition: background-color 400ms ease-in-out;
+
+        div {
+            display: flex;
+            align-items: center;
+
+            span {
+                border: 1px solid $gris-oscuro;
+                height: 30px;
+                width: 30px;
+                min-width: 30px;
+                border-radius: 30px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                margin-right: 10px;
+            }
+
+            span.check {
+                color: white;
+                background-color: $verde;
+            }
+        }
+        
+        div.eval {
+            color: $azul;
+        }
+
+    }
+
+    .fila:hover {
+        cursor: pointer;
+        background-color: $gris-claro;
+    }
+
+    .fila div.eval span {
+        border: 1px solid $azul;
+    }
+
+    .fila.check div span {
+        border: 1px solid $verde;
+        color: white;
+        background-color: $verde;
+    }
+
+}
+
+.card.side {
+
+    width: calc(40% - 40px);
+
+    h2 {
+        padding: 1em 0;
+    }
+
+    hr {
+        margin: 0;
+    }
+
+    .fila {
+        margin: 0;
+        padding: 1em;
+    }
+}
+
+.card.jumbo {
+
+    width: calc(100% - 40px);
+
+    h2 {
+        padding: 1em 0;
+    }
+
+    hr {
+        margin: 0;
+    } 
+
+    .fila {
+        margin: 0;
+        padding: 1em;
+        transition: background-color 400ms ease-in-out;
+
+        div {
+            display: flex;
+            align-items: center;
+
+            span {
+                border: 1px solid $gris-oscuro;
+                height: 30px;
+                width: 30px;
+                min-width: 30px;
+                border-radius: 30px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                margin-right: 10px;
+            }
+
+            span.check {
+                color: white;
+                background-color: $verde;
+            }
+        }
+        
+        div.eval {
+            color: $azul;
+        }
+
+    }
+
+    .fila:hover {
+        cursor: pointer;
+        background-color: $gris-claro;
+    }
+
+    .fila div.eval span {
+        border: 1px solid $azul;
+    }
+
+    .fila.check div span {
+        border: 1px solid $verde;
+        color: white;
+        background-color: $verde;
+    }
+
+}
+
+.card.form {
+
+    width: calc(80% - 40px);
+    position: relative;
+
+    h2 {
+        padding: 1em 0;
+    }
+
+    .fila.space {
+        width: 100%;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+    }
+
+}
+
+@media(max-width: 720px) {
+
+    .card.list {
+        width: calc(100% - 40px);
+    }
+    .card.side {
+        width: calc(100% - 40px);
+    }
+}
+
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(30, 30, 45, 0.88);
+    width: 100vw;
+    height: 100vh;
+    z-index: 500;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

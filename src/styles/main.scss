@@ -1,0 +1,79 @@
+/* CSS Apppy */
+/* By Pedro Jiménez */
+/* 2019 */
+
+@import 'abstracts/variables';
+@import 'abstracts/mixins';
+
+@import 'base/reset';
+@import 'base/typography';
+
+@import 'layout/grid';
+@import 'layout/navigation';
+
+@import 'components/badges';
+@import 'components/breadcrumb';
+@import 'components/buttons';
+@import 'components/cards';
+@import 'components/forms';
+@import 'components/friso';
+@import 'components/messages';
+@import 'components/nav';
+
+@import 'pages/courses';
+@import 'pages/landing';
+
+// Animations
+
+.spinner-white {
+    height: 16px;
+    width: 16px;
+    margin-right: 5px;
+    animation: rotate 0.8s infinite linear;
+    border: 3px solid #fff;
+    border-right-color: transparent;
+    border-radius: 50%;
+}
+  
+@keyframes rotate {
+    0%    { transform: rotate(0deg); }
+    100%  { transform: rotate(360deg); }
+}
+
+html {
+    font-size: 100%;
+}
+
+body {
+    font-family: $fuente;
+    color: $gris-oscuro;
+}
+
+hr {
+    border: none;
+    height: 1px;
+    background-color: $gris-claro;
+}
+
+h1 {
+    font-size: 2em;
+    line-height: 1.5;
+}
+
+h2 {
+    font-size: 1.2em;
+    line-height: 1.5;
+}
+
+p {
+    font-size: 1em;
+    line-height: 1.5;
+    padding: 1em 0;
+}
+
+b {
+    color: $azul;
+}
+
+
+

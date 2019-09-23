@@ -1,0 +1,73 @@
+.landing {
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+
+    .front {
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        background-image: url('src/assets/portada.jpg');
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+    }
+
+    .auth {
+        width: 50%;
+
+        form {
+            width: 100%;
+            margin: 0 auto;
+            padding: 1em;
+        }
+    }
+}
+
+.mini-footer {
+    height: 40px;
+    width: 100%;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    font-size: 14px;
+}
+
+.rrss img {
+    margin: 0 5px;
+    width: 32px;
+    height: 32px;
+}
+
+@media (max-width: 860px) {
+    .landing {
+        flex-direction: column;
+    
+        .front {
+            width: 100%;
+            height: calc(100vh - 370px);
+        }
+
+        .auth {
+            width: 100%;
+        }
+
+    }
+}
+
+.logo {
+    width: 100px;
+}
+
+.rrss img {
+    margin: 0 5px;
+    width: 32px;
+    height: 32px;
+}
+
+input.ng-invalid.ng-touched {
+    border: 1px solid red;
+}

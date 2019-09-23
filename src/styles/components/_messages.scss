@@ -1,0 +1,28 @@
+.message {
+    padding: 1em 1em 1em 3em;
+    border-radius: 4px;
+    color: $gris-oscuro;
+    background-color: #ffffff;
+    @include flex(row, flex-start, center);
+
+    &.success {
+        border: 1px solid $verde;
+        background-image: url('src/assets/check-circle.svg');
+        background-repeat: no-repeat;
+        background-position-x: 8px;
+        background-position-y: 10px;
+    }
+    
+    &.warning {
+        border: 1px solid $amarillo;
+    }
+    
+    &.danger {
+        border: 1px solid $rojo;
+        background-image: url('src/assets/alert-triangle.svg');
+        background-repeat: no-repeat;
+        background-position-x: 8px;
+        background-position-y: 10px;
+    }
+
+}

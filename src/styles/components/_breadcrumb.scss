@@ -1,0 +1,25 @@
+.breadcrumb {
+        
+    span {
+        color: rgba(255, 255, 255, 0.6);
+        cursor: pointer;
+        line-height: 1.5;
+    }
+
+    span:hover {
+        color: white;
+    }
+    
+    span.active {
+        color: white;
+        cursor: default;
+    }
+}
+
+@media(max-width: 720px)  {
+
+    .breadcrumb {
+        display: none;
+    }
+
+}

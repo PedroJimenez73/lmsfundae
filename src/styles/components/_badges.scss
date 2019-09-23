@@ -1,0 +1,22 @@
+.badge {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
+    color: white;
+    border-radius: 15px;
+    padding: 0.5em 1em;
+    font-family: Arial, Helvetica, sans-serif;
+
+    &.success {
+        background-color: $verde;
+    }
+    
+    &.warning {
+        background-color: $amarillo;
+    }
+
+    &.info {
+        background-color: $azul;
+    }
+}

@@ -1,0 +1,41 @@
+input {
+    font-family: $fuente;
+    font-size: 1em;
+    line-height: 1.5;
+    border: none;
+    border-radius: 4px;
+    color: $gris-oscuro;
+    background-color: rgba(247,247,249,.7);
+    background-repeat: no-repeat;
+    background-position: 10px 14px;
+    background-size: 20px 20px;
+    padding: 0.8em 1em 0.8em 1em;
+    width: 100%;
+}
+
+input::placeholder {
+    color: $gris;
+    font-family: $fuente;
+}
+
+input.user {
+    padding: .8em 1em .8em 2.5em;
+    background-image: url('../assets/user.svg');
+}
+
+input.email {
+    padding: .8em 1em .8em 2.5em;
+    background-image: url('../assets/mail.svg');
+}
+
+input.password {
+    padding: .8em 1em .8em 2.5em;
+    background-image: url('../assets/unlock.svg');
+}
+
+input:focus {
+    outline: none;
+}
+label {
+    margin-bottom: 0.5em;
+}

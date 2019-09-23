@@ -1,0 +1,59 @@
+// Lessons
+
+.lesson {
+    
+    display: none;
+    padding: 1em;
+
+    h3 {
+        padding: 10px 0;
+    }
+
+    p {
+        padding: 10px 0;
+        line-height: 1.5;
+    }
+
+    .float-right {
+        float: right;
+        width: 40%;
+        margin: 20px;
+    }
+
+}
+
+.lesson.open {
+
+    display: block;
+
+}
+
+// Video
+
+.contenedor-video {
+    padding: 40px 10px;
+    display: flex;
+
+    video {
+        width: 640px;
+    }
+
+    .descripcion-video {
+        margin-left: 10px;
+        padding: 10px 10px 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        border-bottom: 1px solid $verde;
+
+        .duracion {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+
+            span {
+                font-size: 20px;
+            }
+        }
+    }
+}

@@ -1,0 +1,72 @@
+<nav *ngIf="isLogged">
+    <div class="cabecera">
+        <div class="burger" #burger (click)="toggleMenu()">
+            <div class="bar up"></div>
+            <div class="bar middle"></div>
+            <div class="bar down"></div>
+        </div>
+        <img *ngIf="!verMensaje" class="logo-white" src="assets/logo-white.svg" alt="">
+        <div class="message" [ngClass]="tipoMensaje" *ngIf="verMensaje">{{mensaje}}</div>
+        <div class="user">
+            <span>
+                <img src="assets/user-circle.svg">
+                <span class="alert">1</span>
+            </span>
+            {{nombre}}
+            <div class="dropdown">
+                <div class="menu-user">
+                    <div class="item"  (click)="toggleOverlay()">Mi perfil</div>
+                    <hr>
+                    <div class="item"  (click)="toggleOverlay()">
+                        Mensajes <span class="alert">1</span>
+                    </div>
+                    <hr>
+                    <div class="item"  (click)="toggleOverlay()">Ayuda</div>
+                    <hr>
+                    <div class="fila derecha">
+                        <button (click)="exit()">Cerrar sesión</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <app-breadcrumb></app-breadcrumb>
+</nav>
+<div class="menu-container" #menu>
+    <div class="item" routerLink="/" (click)="toggleMenu()">
+        <span>Inicio</span>
+    </div>
+    <hr>
+    <div class="item" routerLink="/cursos" (click)="toggleMenu()">
+        <span>Cursos</span>
+    </div>
+    <hr>
+    <div class="item" (click)="toggleOverlay(true)">
+        <span>Foros</span>
+    </div>
+    <hr>
+    <div class="item" (click)="toggleOverlay(true)">
+        <span>Repositorio</span>
+    </div>
+    <hr>
+    <div class="item" (click)="toggleOverlay(true)">
+        <span>Ayuda y soporte</span>
+    </div>
+    <div class="item">
+        &copy; 2019 ELERNIAM
+    </div>
+</div>
+<div class="overlay" (click)="toggleOverlay()" *ngIf="showOverlay">
+    <div class="card">
+        <div class="fila space">
+            <img src="assets/alert-triangle.svg">
+            <img style="cursor: pointer;" src="assets/x.svg">
+        </div>
+        <div class="fila">
+            <h2>La funcionalidad no está habilitada, por favor contacte con el administrador.</h2>
+        </div>
+        <div class="fila derecha">
+            <button>Aceptar</button>
+        </div>
+    </div>
+</div>

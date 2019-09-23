@@ -1,0 +1,138 @@
+nav {
+    width: 100%;
+    height: 220px;
+    background-image: url('../assets/friso.jpg');
+    background-repeat: no-repeat;
+    background-position: center center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 1em;
+    color: white;
+    border-bottom: 0.8px solid rgba(255,255,255,.3);
+
+    .cabecera {
+
+        @include flex(row, space-between, center);
+
+        .logo-white {
+            height: 50px;
+            position: absolute;
+            top: 15px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+      
+        .user {
+            @include flex(row, flex-start, center);
+            margin-right: 0;
+            padding: 6px 10px 4px 4px;
+            position: relative;
+      
+            span {
+                font-size: 14px;
+                padding: 8px;
+                position: relative;
+      
+                span.alert {
+                  position: absolute;
+                  top: -1px;
+                  right: -1px;
+                  font-size: 12px;
+                  background-color: #b53f2a;
+                  height: 20px;
+                  width: 20px;
+                  border-radius: 15px;
+                  @include flex(row, center, center);
+                }
+            }
+        }
+      
+        .user:hover {
+          background-color: rgba(255,255,255,.1);
+          border-radius: 4px;
+          cursor: pointer;
+        } 
+      
+        .dropdown {
+          display: none;
+          position: absolute;
+          top: 60px;
+          right: 0;
+          min-width: 300px;
+          z-index: 10;
+          padding: 20px 0;
+      
+          .menu-user {
+            width: 100%;
+            position: absolute;
+            padding: 20px;
+            box-shadow: 0 0 13px 0 rgba(82,63,105,.05);
+            background-color: #1e1e2d;
+            color: #67666e;
+      
+            .item {
+              color: #a2a3b7;
+              padding: 20px 0;
+              cursor: pointer;
+              position: relative;
+      
+              span.alert {
+                position: absolute;
+                top: 15px;
+                right: 10px;
+                font-size: 16px;
+                background-color: #b53f2a;
+                height: 30px;
+                width: 30px;
+                border-radius: 25px;
+                @include flex(row, center, center);
+              }
+      
+            }
+      
+            hr {
+              border: none;
+              height: 1px;
+              background-color: #a2a3b7d0;
+              margin: 0;
+            }
+        
+            .item:hover {
+              color: white;
+            }
+      
+            button {
+              background-color: white;
+              color: #1e1e2d;
+              margin: 10px 0;
+            }
+          
+          }
+        
+          .menu-user:before, .menu-user:after {
+            content: '';
+            display: block;
+            position: absolute;
+            bottom: 100%;
+            width: 0;
+            height: 0;
+          }
+      
+          .menu-user:after {
+            right: 20px;
+            border: 15px solid transparent;
+            border-bottom-color: #1e1e2d;
+          }
+      
+        }
+      
+        .user:hover .dropdown {
+          // top: 80px;
+          // right: 0;
+          display: inline;
+        }
+    }
+
+  
+}

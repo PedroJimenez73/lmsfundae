@@ -1,0 +1,20 @@
+<form [formGroup]="loginForm" (ngSubmit)="inicioSesion()">
+    <div class="fila centrada">
+        <img class="logo" src="../../../assets/logo-color.svg" alt="">
+    </div>
+    <div class="fila">
+        <input class="email" type="email" placeholder="Correo electrónico" formControlName="email" #email>
+    </div>
+    <div class="fila">
+        <input class="password" type="password" placeholder="Contraseña" formControlName="password">
+    </div>
+    <div class="fila derecha">
+        <button type="submit" [disabled]="loginForm.invalid">
+            <span *ngIf="!waiting">Iniciar sesión</span>
+            <span *ngIf="waiting" style="display: flex;"><div class="spinner-white"></div> Espere...</span>
+        </button>
+    </div>
+    <div *ngIf="verMensaje" class="fila">
+        <div class="message danger" style="width: 100%">{{errores}}</div>
+    </div>
+</form>

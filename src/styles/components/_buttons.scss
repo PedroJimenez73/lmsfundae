@@ -1,0 +1,35 @@
+button {
+    background-color: $azul;
+    border-radius: 4px;
+    border: 1px solid $azul;
+    font-size: 1em;
+    font-family: $fuente;
+    color: #ffffff;
+    box-shadow: 0 4px 16px 0 rgba(88,103,221,.15);
+    padding: 0.5em 1em;
+    transition: all 400ms ease-in-out;
+
+    &:hover {
+        border: 1px solid $azul-hover;
+        background-color: $azul-hover;
+        box-shadow: 0 9px 16px 0 rgba(88,103,221,.25);
+    }
+
+    &:disabled {
+        cursor: not-allowed;
+    }
+}
+
+button.inline {
+    background-color: white;
+    border: 1px solid $azul;
+    color: $azul;
+
+    &:hover {
+        border: 1px solid $azul-hover;
+        background-color: white;
+        color: $azul-hover;
+        box-shadow: 0 9px 16px 0 rgba(88,103,221,.25);
+    }
+}
+

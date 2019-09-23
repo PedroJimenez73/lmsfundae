@@ -1,0 +1,16 @@
+<!-- <h1>{{titulo}}</h1> -->
+<!-- <div class="breadcrumb">
+    <span routerLink="/" *ngIf="textosUrl.length !== 0">Inicio</span>
+    <span *ngFor="let texto of textosUrl; let i = index; let last = last"> 
+        <span routerLink="/{{urls[i]}}" *ngIf="!last"> > {{texto}}</span>
+        <span class="active" *ngIf="last"> > {{texto}}</span>
+    </span>            
+</div> -->
+<ul class="breadcrumb">
+    <li *ngFor="let breadcrumb of breadcrumbs"
+        class="breadcrumb-item">
+      <a routerLink="{{breadcrumb.url}}">
+        {{ breadcrumb.label }}
+      </a>
+    </li>
+  </ul>
