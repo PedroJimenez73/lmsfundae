@@ -1,0 +1,20 @@
+<div class="contenedor fondo-gris">
+    <div class="contenido para-friso flex">
+        <div class="card jumbo">
+            <header>
+                <h2>Cursos</h2>
+                <div>
+                    <button class="inline" routerLink="/admin">Volver</button>
+                    <button class="m-l-1em" routerLink="crear-curso">Añadir curso</button>
+                </div>
+            </header>
+            <hr>
+            <div class="fila space check" *ngFor="let curso of cursos; let i = index;" routerLink="editar-curso/{{curso._id}}">
+                <div>
+                    <span>{{i + 1}}</span> {{curso.titulo}}
+                </div>
+            </div>
+            <hr>
+        </div>
+    </div>
+</div>

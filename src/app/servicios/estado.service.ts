@@ -15,11 +15,12 @@ export class EstadoService {
   usuario = {
     objectId: '',
     nombre: '',
+    apellidos: '',
     rol: ''
   }
 
   private loggedIn = new BehaviorSubject<any>({logged: false});
-  private mensajeIn = new BehaviorSubject<any>({mensaje: ''});
+  private mensajeIn = new BehaviorSubject<any>({mensaje: '', tipo: '', extra: ''});
 
   get isLoggedIn() {
     return this.loggedIn.asObservable();
@@ -39,10 +40,6 @@ export class EstadoService {
     return this.http.post(this.urlLogin, usuario).pipe(
       map( (res: any) => {
         this.guardarCredenciales(res);
-        // this.welcome.next(res.nombre);
-        // setTimeout(() => {
-        //   this.welcome.next('');
-        // }, 3000)
         return res;
       })
     );
@@ -52,18 +49,19 @@ export class EstadoService {
     localStorage.setItem('usuario', JSON.stringify(usuario));
     this.usuario = JSON.parse(localStorage.getItem('usuario'));
     this.loggedIn.next({logged: true});
-    this.mensajeIn.next({mensaje: `Bienvenid@ de nuevo ${this.usuario.nombre}`});
+    this.mensajeIn.next({mensaje: `Bienvenid@ de nuevo ${this.usuario.nombre}`, tipo: 'success', extra: this.usuario.nombre});
   }
 
   cargarCredenciales() {
     if (localStorage.getItem('usuario')) {
       this.usuario = JSON.parse(localStorage.getItem('usuario'));
       this.loggedIn.next({logged: true});
-      this.mensajeIn.next({mensaje: `Bienvenid@ de nuevo ${this.usuario.nombre}`});
+      this.mensajeIn.next({mensaje: `Bienvenid@ de nuevo ${this.usuario.nombre}`, tipo: 'success', extra: this.usuario.nombre});
     } else {
       this.usuario = {
         objectId: '',
         nombre: '',
+        apellidos: '',
         rol: ''
       };
       this.loggedIn.next({logged: false});
@@ -75,10 +73,15 @@ export class EstadoService {
     this.usuario = {
       objectId: '',
       nombre: '',
+      apellidos: '',
       rol: ''
     }
     this.loggedIn.next({logged: false});
     this.router.navigate(['/']);
+  }
+
+  newMessage(mensaje, tipo) {
+    this.mensajeIn.next({mensaje: mensaje, tipo: tipo, extra: this.usuario.nombre});
   }
 
 }

@@ -1,0 +1,72 @@
+<div class="contenedor fondo-gris">
+    <div class="contenido para-friso flex-center">
+        <div class="card form">
+            <header>
+                <h2>Editar Usuario</h2>
+                <button class="inline" routerLink="/admin/listado-usuarios">Volver</button>
+            </header>
+            <hr>
+            <form [formGroup]="regForm" (ngSubmit)="submitReg()">
+                <div class="fila">
+                    <div class="col-50">
+                        <label>Nombre</label>
+                        <input type="text" formControlName="nombre" #nombre>
+                    </div>
+                    <div class="col-50">
+                        <label>Apellidos</label>
+                        <input type="text" formControlName="apellidos">
+                    </div>
+                </div>
+                <div class="fila">
+                    <div class="col-50">
+                        <label>DNI</label>
+                        <input type="text" formControlName="dni">
+                    </div>
+                    <div class="col-50">
+                        <label>Correo electrónico</label>
+                        <input type="email" formControlName="email">
+                    </div>
+                </div>
+                <div class="fila">
+                    <div class="col-50">
+                        <label>Roles</label>
+                        <div class="value-selects">
+                            <span class="value-select" *ngFor="let rolSel of rolesSel; let i = index" (click)="deleteRolSel(i)">{{rolSel}}</span>
+                        </div>
+                        <select formControlName="roles">
+                            <option value="texto">Añadir rol</option>
+                            <option *ngFor="let rol of roles" [ngValue]="rol">{{rol}}</option>
+                        </select>
+                    </div>
+                    <div class="col-50">
+                    </div>
+                </div>
+                <hr>
+                <div class="fila derecha">
+                    <button class="inline danger" (click)="toggleOverlay($event)">Eliminar</button>
+                    <button class="inline m-l-1em" routerLink="/admin/listado-usuarios">Cancelar</button>
+                    <button type="submit" class="m-l-1em" [disabled]="regForm.invalid">
+                        <span *ngIf="!waiting">Guardar cambios</span>
+                        <span *ngIf="waiting" style="display: flex;"><div class="spinner-white"></div> Espere...</span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<div class="overlay" *ngIf="showOverlay">
+    <div class="card">
+        <div class="fila space">
+            <img src="assets/alert-triangle.svg">
+            <img style="cursor: pointer" src="assets/x.svg" (click)="toggleOverlay($event)">
+        </div>
+        <hr>
+        <div class="fila">
+            <h2>¿Está seguro de eliminar el usuario?</h2>
+        </div>
+        <div class="fila derecha">
+            <button class="inline" (click)="toggleOverlay($event)">Cancelar</button>
+            <button class="m-l-1em" (click)="deleteUsuario()">Eliminar</button>
+        </div>
+    </div>
+</div>

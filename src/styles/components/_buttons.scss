@@ -33,3 +33,29 @@ button.inline {
     }
 }
 
+button.success {
+    background-color: white;
+    border: 1px solid $verde;
+    color: $verde;
+
+    &:hover {
+        border: 1px solid $verde-hover;
+        background-color: white;
+        color: $verde-hover;
+        box-shadow: 0 9px 16px 0 rgba(88,103,221,.25);
+    }
+}
+
+button.danger {
+    background-color: white;
+    border: 1px solid $rojo;
+    color: $rojo;
+
+    &:hover {
+        border: 1px solid $rojo-hover;
+        background-color: white;
+        color: $rojo-hover;
+        box-shadow: 0 9px 16px 0 rgba(88,103,221,.25);
+    }
+}
+

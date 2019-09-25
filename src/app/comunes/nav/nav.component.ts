@@ -11,8 +11,9 @@ export class NavComponent implements OnInit {
 
   isLogged = false;
   verMensaje = false;
-  tipoMensaje = 'success';
   mensaje = '';
+  nombre = '';
+  tipoMensaje: '';
   subscripLogin: Subscription;
   subscripMensaje: Subscription;
   @ViewChild('burger', {static: false}) burgerRef: ElementRef;
@@ -32,6 +33,8 @@ export class NavComponent implements OnInit {
       (data: any) => {
         this.verMensaje = true;
         this.mensaje = data.mensaje;
+        this.tipoMensaje = data.tipo;
+        this.nombre = data.extra;
         setTimeout(() => {this.verMensaje = false},3000);
       },
       (error:any) => {console.log(error)}
@@ -39,6 +42,7 @@ export class NavComponent implements OnInit {
   }
 
   ngOnInit() {
+    // this.nombre = JSON.parse(localStorage.getItem('usuario')).nombre;
   }
 
   toggleMenu() {

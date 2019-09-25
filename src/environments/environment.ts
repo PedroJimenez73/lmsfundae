@@ -7,9 +7,11 @@ export const environment = {
   urlLogin: 'http://localhost:443/login',
   urlUsuario: 'http://localhost:443/usuario',
   urlCurso: 'http://localhost:443/curso',
+  urlImagenes: 'http://localhost:443/imagenes/',
   // urlCurso: 'https://tranquil-capitol-reef-26816.herokuapp.com:443/curso',
   // urlLogin: 'https://tranquil-capitol-reef-26816.herokuapp.com:443/login',
   // urlUsuario: 'https://tranquil-capitol-reef-26816.herokuapp.com/usuario',
+  // urlImagenes: 'https://tranquil-capitol-reef-26816.herokuapp.com/imagenes/',
 };
 
 /*

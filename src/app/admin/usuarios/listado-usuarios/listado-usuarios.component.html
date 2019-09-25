@@ -1,0 +1,37 @@
+<div class="contenedor fondo-gris">
+    <div class="contenido para-friso flex">
+        <div class="card jumbo">
+            <header>
+                <h2>Usuarios</h2>
+                <div>
+                    <button class="success" routerLink="/admin">Volver</button>
+                    <button class="success m-l-1em" routerLink="crear-usuario">Añadir usuario</button>
+                </div>
+            </header>
+            <hr>
+            <div class="fila header">
+                <div class="w-25">
+                    Nombre y apellidos
+                </div>
+                <div class="w-25">
+                    Email
+                </div>
+                <div class="w-25">
+                    Roles
+                </div>
+            </div>
+            <div class="fila check" *ngFor="let usuario of usuarios; let i = index;" routerLink="editar-usuario/{{usuario._id}}">
+                <div class="w-25">
+                    {{usuario.nombre}} {{usuario.apellidos}}
+                </div>
+                <div class="w-25">
+                    {{usuario.email}}
+                </div>
+                <div class="w-25">
+                    <div *ngFor="let rol of usuario['roles']">{{rol}}&nbsp;</div>
+                </div>
+            </div>
+            <hr>
+        </div>
+    </div>
+</div>

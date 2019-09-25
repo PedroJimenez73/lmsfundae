@@ -3,7 +3,7 @@
         <div class="card form">
             <header>
                 <h2>Crear nuevo Curso</h2>
-                <button class="inline" routerLink="/cursos">Volver</button>
+                <button class="inline" routerLink="/admin/listado-cursos">Volver</button>
             </header>
             <hr>
             <form [formGroup]="regForm" (ngSubmit)="submitReg()">
@@ -34,37 +34,30 @@
                     </div>
                     <div class="col-33">
                         <label>Fecha inicio</label>
-                        <input type="date" formControlName="fechaInicio">
+                        <input type="date" formControlName="fechaInicio" value="{{fechaActual | date:'yyyy-MM-dd'}}">
                     </div>
                     <div class="col-33">
                         <label>Fecha finalización</label>
-                        <input type="date" formControlName="fechaFinalizacion">
+                        <input type="date" formControlName="fechaFin" value="{{fechaActual | date:'yyyy-MM-dd'}}">
+                    </div>
+                </div>
+                <div class="fila">
+                    <div class="col-50">
+                        <label>Autor</label>
+                        <select formControlName="autor">
+                            <option *ngFor="let autor of autores" [ngValue]="autor._id">{{autor.nombre}}&nbsp;{{autor.apellidos}}</option>
+                        </select>
                     </div>
                 </div>
                 <hr>
                 <div class="fila derecha">
-                    <button class="inline" routerLink="/cursos">Cancelar</button>
+                    <button class="inline" routerLink="/admin/listado-cursos">Cancelar</button>
                     <button type="submit" class="m-l-1em" [disabled]="regForm.invalid" (click)="uploader.uploadAll()">
                         <span *ngIf="!waiting">Añadir curso</span>
                         <span *ngIf="waiting" style="display: flex;"><div class="spinner-white"></div> Espere...</span>
                     </button>
                 </div>
             </form>
-        </div>
-    </div>
-</div>
-<div class="overlay" (click)="toggleOverlay()" *ngIf="showOverlay">
-    <div class="card">
-        <div class="fila space">
-            <img src="assets/alert-triangle.svg">
-            <img style="cursor: pointer" src="assets/x.svg">
-        </div>
-        <hr>
-        <div class="fila">
-            <h2>La funcionalidad no está habilitada, por favor contacte con el administrador.</h2>
-        </div>
-        <div class="fila derecha">
-            <button>Aceptar</button>
         </div>
     </div>
 </div>

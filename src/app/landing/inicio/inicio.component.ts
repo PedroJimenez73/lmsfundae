@@ -12,6 +12,7 @@ export class InicioComponent implements OnInit {
 
   isLogged = false;
   subscripLogin: Subscription;
+  showOverlay = false;
 
   constructor(private estadoService: EstadoService,
               private router: Router) { 
@@ -25,6 +26,10 @@ export class InicioComponent implements OnInit {
               }
 
   ngOnInit() {
+  }
+
+  toggleOverlay() {
+    this.showOverlay = !this.showOverlay;
   }
 
 }

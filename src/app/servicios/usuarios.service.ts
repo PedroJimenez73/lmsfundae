@@ -6,22 +6,22 @@ import { map } from 'rxjs/operators';
 @Injectable({
   providedIn: 'root'
 })
-export class CursosService {
+export class UsuariosService {
 
   constructor(private http: HttpClient) { }
 
-  urlCurso = environment.urlCurso;
+  urlUsuario = environment.urlUsuario;
 
-  getCursos() {
-    return this.http.get(this.urlCurso).pipe(
+  getUsuarios() {
+    return this.http.get(this.urlUsuario).pipe(
       map( (res: any) => {
         return res;
       })
     );
   }
 
-  getCurso(id) {
-    return this.http.get(this.urlCurso + `/${id}`)
+  getUsuario(id) {
+    return this.http.get(this.urlUsuario + `/${id}`)
     .pipe(
       map((resp: any) => {
         return resp;
@@ -29,17 +29,17 @@ export class CursosService {
     );
   }
 
-  postCurso(curso) {
-    const url = this.urlCurso;
-    return this.http.post(url, curso).pipe(
+  postUsuario(usuario) {
+    const url = this.urlUsuario;
+    return this.http.post(url, usuario).pipe(
       map( (res: any) => {
         return res;
       })
     );
   }
 
-  putCurso(id, curso) {
-    return this.http.put(this.urlCurso + `/${id}`, curso)
+  putUsuario(id, usuario) {
+    return this.http.put(this.urlUsuario + `/${id}`, usuario)
     .pipe(
       map((resp: any) => {
         return resp;
@@ -47,13 +47,12 @@ export class CursosService {
     );
   }
 
-  deleteCurso(id) {
-    return this.http.delete(this.urlCurso + `/${id}`)
+  deleteUsuario(id) {
+    return this.http.delete(this.urlUsuario + `/${id}`)
       .pipe(
         map( (res: any) => {
           return res;
         })
       );
   }
-
 }

@@ -6,7 +6,7 @@ import { InicioComponent } from './landing/inicio/inicio.component';
 
 const routes: Routes = [
   {path: '', component: InicioComponent, data: {titulo: 'Inicio'} },
-  {path: 'cursos', data: {titulo: 'Cursos'}, loadChildren: '../app/cursos/cursos.module#CursosModule'},
+  {path: 'admin', data: {titulo: 'Administración LMS'}, loadChildren: '../app/admin/admin.module#AdminModule'},
 ];
 
 @NgModule({

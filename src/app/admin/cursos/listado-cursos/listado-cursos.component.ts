@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { CursosService } from 'src/app/servicios/cursos.service';
 
 @Component({
-  selector: 'app-inicio-cursos',
-  templateUrl: './inicio-cursos.component.html',
-  styleUrls: ['./inicio-cursos.component.scss']
+  selector: 'app-listado-cursos',
+  templateUrl: './listado-cursos.component.html',
+  styleUrls: ['./listado-cursos.component.scss']
 })
-export class InicioCursosComponent implements OnInit {
+export class ListadoCursosComponent implements OnInit {
 
   cursos: {};
 
@@ -16,7 +16,6 @@ export class InicioCursosComponent implements OnInit {
     this.cursosService.getCursos()
     .subscribe((res: any)=>{
       this.cursos = res.cursos;
-      console.log(this.cursos)
     },
       (error) => { console.log(error)}
     )

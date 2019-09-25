@@ -60,6 +60,14 @@
     align-items: center; 
 }
 
+.header {
+    background-color: $verde;
+
+    div {
+        color: white;
+    }
+}
+
 .upload-imagen {
     @include flex(row, flex-start, center);
 
@@ -134,6 +142,19 @@
     flex-direction: column;
     width: 20%;
     margin: 0 0.5em;
+}
+
+.w-100 {
+    width: 100%;
+}
+.w-75 {
+    width: 75%;
+}
+.w-50 {
+    width: 50%;
+}
+.w-25 {
+    width: 25%;
 }
 
 .m-t-1em {
