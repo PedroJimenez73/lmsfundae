@@ -49,6 +49,17 @@
                         </select>
                     </div>
                 </div>
+                <div class="fila">
+                    <div class="col-100">
+                        <label>Unidades</label>
+                        <hr>
+                        <div class="unidad" *ngFor="let unidad of unidades; let i = index" routerLink="editar-unidad/{{i}}">
+                            <div><span>{{i + 1}}</span> {{unidad.titulo}}</div>
+                            <div><img src="assets/watch.svg" alt=""> {{unidad.duracion}} minutos</div>
+                        </div>
+                        <button class="inline success" (click)="toggleOverlay($event)">Añadir unidad</button>
+                    </div>
+                </div>
                 <hr>
                 <div class="fila derecha">
                     <button class="inline danger" (click)="toggleOverlay($event)">Eliminar</button>

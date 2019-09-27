@@ -192,14 +192,46 @@
 
 }
 
+.card.modal-xl {
+    width: 720px;
+}
+
+.unidad {
+    padding: 1em;
+    @include flex(row, space-between, center);
+
+    div {
+        @include flex(row, flex-start, center);
+    }
+}
+
+.unidad:hover {
+    cursor: pointer;
+    background-color: $gris-claro;
+}
+
+.unidad span {
+    border: 1px solid $verde;
+    height: 30px;
+    width: 30px;
+    min-width: 30px;
+    border-radius: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 10px;
+    background-color: $verde;
+    color: white;
+}
+
 @media(max-width: 720px) {
 
-    .card.list {
+    .card.list,
+    .card.side,
+    .card.modal-xl {
         width: calc(100% - 40px);
     }
-    .card.side {
-        width: calc(100% - 40px);
-    }
+
 }
 
 

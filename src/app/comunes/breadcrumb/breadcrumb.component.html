@@ -6,11 +6,19 @@
         <span class="active" *ngIf="last"> > {{texto}}</span>
     </span>            
 </div> -->
-<ul class="breadcrumb">
-    <!-- <li *ngFor="let breadcrumb of breadcrumbs"
-        class="breadcrumb-item">
-      <a routerLink="{{breadcrumb.url}}">
-        {{ breadcrumb.label }}
-      </a>
-    </li> -->
-  </ul>
+<div class="breadcrumb">
+  <a *ngFor="let breadcrumb of breadcrumbs; let last = last">
+    <span *ngIf="!breadcrumb.ruta && !last" routerLink="/">Inicio > </span>
+    <span *ngIf="!breadcrumb.ruta && last" class="active">Inicio </span>
+    <span *ngIf="breadcrumb.ruta && !last" routerLink="{{breadcrumb.url}}">{{breadcrumb.ruta}} > </span>
+    <span *ngIf="last" class="active">{{breadcrumb.ruta}} </span>
+  </a>
+</div>
+<!-- <ul class="breadcrumb">
+  <li *ngFor="let ruta of rutas"
+      class="breadcrumb-item">
+    <a>
+      {{ ruta }}
+    </a>
+  </li>
+</ul> -->

@@ -16,6 +16,7 @@ export class CrearCursoComponent implements OnInit {
 
 
   @ViewChild('codigo', {static: false}) codigoRef: ElementRef;
+  @ViewChild('titulo', {static: false}) tituloRef: ElementRef;
   regForm: FormGroup;
   curso: any;
   urlImagenes = environment.urlImagenes;
@@ -25,6 +26,9 @@ export class CrearCursoComponent implements OnInit {
   waiting: boolean;
   autores: Array<object> = [];
   fechaActual = new Date();
+  showOverlay = false;
+  unidades = [];
+  itemsForm: FormGroup;
 
   constructor(private fr: FormBuilder,
               private usuariosService: UsuariosService,
@@ -41,7 +45,6 @@ export class CrearCursoComponent implements OnInit {
             this.autores.push(usuario);
           }
         });
-        console.log(this.autores);
       },
         (error) => { console.log(error)}
       )
@@ -50,13 +53,20 @@ export class CrearCursoComponent implements OnInit {
       codigo: ['', Validators.required],
       titulo: ['', Validators.required],
       horas: ['', Validators.required],
-      fechaInicio: [null],
-      fechaFin: [null],
+      fechaInicio: [this.fechaActual],
+      fechaFin: [this.fechaActual],
       autor: ['', Validators.required]
+    });
+    this.itemsForm = this.fr.group({
+      titulo: ['', Validators.required],
+      duracion: ['', Validators.required]
     });
     setTimeout(() => {
       this.codigoRef.nativeElement.focus();
     },500);
+    this.uploader.onBuildItemForm = (fileItem: any, form: any) => {
+      form.append('nombre', this.regForm.get('codigo').value);
+    };
   }
 
   submitReg() {
@@ -68,6 +78,7 @@ export class CrearCursoComponent implements OnInit {
       fechaInicio: this.regForm.get('fechaInicio').value,
       fechaFin: this.regForm.get('fechaFin').value,
       autor: this.regForm.get('autor').value,
+      unidades: this.unidades
     };
     this.waiting = true;
     this.cursosService.postCurso(curso)
@@ -85,7 +96,7 @@ export class CrearCursoComponent implements OnInit {
 
   onFileSelected(event) {
     if(event.target.files.length > 0) {
-       this.imagen = event.target.files[0].name;
+       this.imagen = this.regForm.get('codigo').value + '.' + event.target.files[0].name.split('.')[event.target.files[0].name.split('.').length -1];
        const file = event.target.files[0];
        const reader = new FileReader();
        reader.onload = e => this.imageSrc = reader.result;
@@ -102,6 +113,22 @@ export class CrearCursoComponent implements OnInit {
             window.clearInterval(scrollToTop);
         }
     }, 16);
+  }
+
+  toggleOverlay($event) {
+    $event.preventDefault()
+    if(!this.showOverlay){
+      setTimeout(() => {
+        this.tituloRef.nativeElement.focus();
+      },500);
+    }
+    this.showOverlay = !this.showOverlay;
+  }
+
+  submitItem() {
+    this.showOverlay = !this.showOverlay;
+    this.unidades.push(this.itemsForm.value);
+    this.itemsForm.reset();
   }
 
 }

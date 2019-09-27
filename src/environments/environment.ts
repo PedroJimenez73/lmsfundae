@@ -8,6 +8,7 @@ export const environment = {
   urlUsuario: 'http://localhost:443/usuario',
   urlCurso: 'http://localhost:443/curso',
   urlImagenes: 'http://localhost:443/imagenes/',
+  urlUnidades: 'http://localhost:443/unidades/',
   // urlCurso: 'https://tranquil-capitol-reef-26816.herokuapp.com:443/curso',
   // urlLogin: 'https://tranquil-capitol-reef-26816.herokuapp.com:443/login',
   // urlUsuario: 'https://tranquil-capitol-reef-26816.herokuapp.com/usuario',

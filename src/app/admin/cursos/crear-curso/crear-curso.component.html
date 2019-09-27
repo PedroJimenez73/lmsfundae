@@ -49,6 +49,17 @@
                         </select>
                     </div>
                 </div>
+                <div class="fila">
+                    <div class="col-100">
+                        <label>Unidades</label>
+                        <hr>
+                        <div class="unidad" *ngFor="let unidad of unidades; let i = index">
+                            <div><span>{{i + 1}}</span> {{unidad.titulo}}</div>
+                            <div><img src="assets/watch.svg" alt=""> {{unidad.duracion}} minutos</div>
+                        </div>
+                        <button class="inline success" (click)="toggleOverlay($event)">Añadir unidad</button>
+                    </div>
+                </div>
                 <hr>
                 <div class="fila derecha">
                     <button class="inline" routerLink="/admin/listado-cursos">Cancelar</button>
@@ -59,5 +70,35 @@
                 </div>
             </form>
         </div>
+    </div>
+</div>
+<div class="overlay" *ngIf="showOverlay">
+    <div class="card modal-xl">
+        <div class="fila space">
+            <h2>Nueva unidad</h2>
+            <img style="cursor: pointer" src="assets/x.svg" (click)="toggleOverlay($event)">
+        </div>
+        <hr>
+        <form [formGroup]="itemsForm" (ngSubmit)="submitItem()">
+            <div class="fila">
+                <div class="col-66">
+                    <label>Título unidad</label>
+                    <input type="text" formControlName="titulo" #titulo>
+                </div>
+                <div class="col-33">
+                    <label>Duración (minutos)</label>
+                    <input type="number" formControlName="duracion">
+                </div>
+            </div>
+            <div class="fila">
+                <div class="col-100">
+                    <p>Una vez creado el curso, acceda de nuevo para añadir el contenido de cada unidad.</p>
+                </div>
+            </div>
+            <div class="fila derecha">
+                <button class="inline" (click)="toggleOverlay($event)">Cancelar</button>
+                <button class="m-l-1em">Añadir</button>
+            </div>
+        </form>
     </div>
 </div>

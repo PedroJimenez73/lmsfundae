@@ -27,6 +27,7 @@ export class EditarCursoComponent implements OnInit {
   showOverlay = false;
   autores: Array<object> = [];
   fechaActual = new Date();
+  unidades = [];
 
   constructor(private fr: FormBuilder,
               private usuariosService: UsuariosService,
@@ -45,20 +46,19 @@ export class EditarCursoComponent implements OnInit {
             this.autores.push(usuario);
           }
         });
-        console.log(this.autores);
       },
         (error) => { console.log(error)}
       )
     this.cursosService.getCurso(this.id)
     .subscribe( (res: any) => {
         this.curso = res.curso;
-        console.log(this.curso);
         this.imageSrc = this.urlImagenes + this.curso.imagen;
+        this.unidades = this.curso.unidades;
         this.regForm.get('codigo').setValue(this.curso.codigo);
         this.regForm.get('titulo').setValue(this.curso.titulo);
         this.regForm.get('horas').setValue(this.curso.horas);
         this.regForm.get('fechaInicio').setValue(this.curso.fechaInicio);
-        this.regForm.get('fechaInicio').setValue(this.curso.fechaInicio);
+        this.regForm.get('fechaFin').setValue(this.curso.fechaFin);
         this.regForm.get('autor').setValue(this.curso.autor);
       }, (error: any) => {
         console.log(error);
@@ -71,6 +71,9 @@ export class EditarCursoComponent implements OnInit {
       fechaFin: [''],
       autor: ['', Validators.required]
     });
+    this.uploader.onBuildItemForm = (fileItem: any, form: any) => {
+      form.append('nombre', this.regForm.get('codigo').value);
+    };
   }
 
   submitReg() {
@@ -111,7 +114,7 @@ export class EditarCursoComponent implements OnInit {
 
   onFileSelected(event) {
     if(event.target.files.length > 0) {
-        this.imagen = event.target.files[0].name;
+        this.imagen = this.regForm.get('codigo').value + '.' + event.target.files[0].name.split('.')[event.target.files[0].name.split('.').length -1];
         const file = event.target.files[0];
         const reader = new FileReader();
         reader.onload = e => this.imageSrc = reader.result;
