@@ -1,0 +1,25 @@
+<div class="contenedor fondo-gris">
+    <div class="contenido para-friso flex">
+        <div class="card list">
+            <header>
+                <h2>Unidades</h2>
+            </header>
+            <hr>
+            <div class="fila space check" *ngFor="let unidad of unidades; let i = index;" (click)="loadScorm(i);">
+                <div>
+                    <span>{{i + 1}}</span> {{unidad.titulo}}
+                </div>
+                {{unidad.duracion}} min
+            </div>
+        </div>
+        <div class="card side">
+            <header>
+                <h2>Seguimiento</h2>
+                <div>
+                    <button class="inline" routerLink="/admin">Volver</button>
+                </div>
+            </header>
+            <hr>
+        </div>
+    </div>
+</div>

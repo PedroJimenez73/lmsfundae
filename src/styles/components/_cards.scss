@@ -5,6 +5,8 @@
     background-color: white;
     box-shadow: 0 0 13px 0 rgba(82,63,105,.05);
     position: relative;
+    display: flex;
+    flex-direction: column;
 
     header {
         padding: 0 1em;
@@ -21,6 +23,16 @@
         width: 30%;
     }
 
+    .poster-course {
+        margin: 20px auto;
+        display: block;
+        width: 80%;
+    }
+
+    & .fila.derecha {
+        margin-top: auto;
+    }
+
     footer {
         width: 100%;
         padding: 0 10px;
@@ -30,11 +42,9 @@
     }
 }
 
-
 .card.list {
 
-    
-    width: calc(60% - 40px);
+    width: calc(60% - 2em);
     
     h2 {
         padding: 1em 0;
@@ -96,7 +106,7 @@
 
 .card.side {
 
-    width: calc(40% - 40px);
+    width: calc(40% - 2em);
 
     h2 {
         padding: 1em 0;

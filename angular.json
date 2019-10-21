@@ -30,7 +30,9 @@
             "styles": [
               "src/styles/main.scss"
             ],
-            "scripts": []
+            "scripts": [
+              "src/scormAPI.js"
+            ]
           },
           "configurations": {
             "production": {

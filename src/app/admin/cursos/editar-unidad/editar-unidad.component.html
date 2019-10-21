@@ -2,33 +2,42 @@
     <div class="contenido para-friso flex-center">
         <div class="card form">
             <header>
-                <h2>Editar {{unidad?.titulo}}</h2>
+                <h2>Editar unidad</h2>
                 <button class="inline" routerLink="/admin/listado-cursos/editar-curso/{{id}}">Volver</button>
             </header>
             <hr>
-            <div class="fila">
-                <div class="col-100"> 
-                    <label>Archivo SCORM 2004 (formato .zip)</label>
-                    <div class="upload-imagen">
-                        <label class="m-l-1em" for="archivo">Subir archivo</label>
-                        <input id="archivo" type="file" ng2FileSelect [uploader]="uploader" (change)="onFileSelected($event)">
-                        <p>{{archivo}}</p>
+            <form [formGroup]="itemsForm" (ngSubmit)="submitItem()">
+                <div class="fila">
+                    <div class="col-66">
+                        <label>Título unidad</label>
+                        <input type="text" formControlName="titulo">
+                    </div>
+                    <div class="col-33">
+                        <label>Duración (minutos)</label>
+                        <input type="number" formControlName="duracion">
                     </div>
                 </div>
-            </div>
-            <hr>
-            <div class="fila derecha">
-                <!-- <button class="inline danger" (click)="toggleOverlay($event)">Eliminar</button>
-                <button class="inline m-l-1em" routerLink="/admin/listado-cursos">Cancelar</button> -->
-                <button type="submit" class="m-l-1em" (click)="uploader.uploadAll()" routerLink="/admin/listado-cursos/editar-curso/{{id}}">
-                    <span *ngIf="!waiting">Guardar cambios</span>
-                    <span *ngIf="waiting" style="display: flex;"><div class="spinner-white"></div> Espere...</span>
-                </button>
-            </div>
+                <div class="fila">
+                    <div class="col-100"> 
+                        <label>Archivo SCORM 2004 (formato .zip)</label>
+                        <div class="upload-imagen">
+                            <label class="m-l-1em" for="archivo">Subir archivo</label>
+                            <input id="archivo" type="file" ng2FileSelect [uploader]="uploader" (change)="onFileSelected($event)">
+                            <p>{{archivo}}</p>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <div class="fila derecha">
+                    <button class="inline danger" (click)="toggleOverlay($event)">Eliminar</button>
+                    <button class="inline m-l-1em" routerLink="/admin/listado-cursos/editar-curso/{{id}}">Cancelar</button>
+                    <button class="m-l-1em" type="submit" (click)="uploader.uploadAll();">Guardar cambios</button>
+                </div>
+            </form>
         </div>
     </div>
 </div>
-<!-- <div class="overlay" *ngIf="showOverlay">
+<div class="overlay" *ngIf="showOverlay">
     <div class="card">
         <div class="fila space">
             <img src="assets/alert-triangle.svg">
@@ -36,11 +45,11 @@
         </div>
         <hr>
         <div class="fila">
-            <h2>¿Está seguro de eliminar el curso?</h2>
+            <h2>¿Está seguro de eliminar la unidad?</h2>
         </div>
         <div class="fila derecha">
             <button class="inline" (click)="toggleOverlay($event)">Cancelar</button>
-            <button class="m-l-1em" (click)="deleteCurso()">Eliminar</button>
+            <button class="m-l-1em" (click)="deleteUnidad()">Eliminar</button>
         </div>
     </div>
-</div> -->
+</div>

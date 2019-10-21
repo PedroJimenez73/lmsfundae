@@ -47,8 +47,26 @@ export class CursosService {
     );
   }
 
+  putUnidad(id, index, unidad) {
+    return this.http.put(this.urlCurso + '/unidad' + `/${id}` + `/${index}`, unidad)
+    .pipe(
+      map((resp: any) => {
+        return resp;
+      })
+    );
+  }
+
   deleteCurso(id) {
     return this.http.delete(this.urlCurso + `/${id}`)
+      .pipe(
+        map( (res: any) => {
+          return res;
+        })
+      );
+  }
+
+  deleteUnidad(id, index) {
+    return this.http.delete(this.urlCurso + '/unidad' + `/${id}` + `/${index}`)
       .pipe(
         map( (res: any) => {
           return res;

@@ -53,11 +53,11 @@
                     <div class="col-100">
                         <label>Unidades</label>
                         <hr>
-                        <div class="unidad" *ngFor="let unidad of unidades; let i = index" routerLink="editar-unidad/{{i}}">
+                        <div class="unidad" *ngFor="let unidad of unidades; let i = index" (click)="editarUnidad(i)">
                             <div><span>{{i + 1}}</span> {{unidad.titulo}}</div>
                             <div><img src="assets/watch.svg" alt=""> {{unidad.duracion}} minutos</div>
                         </div>
-                        <button class="inline success" (click)="toggleOverlay($event)">Añadir unidad</button>
+                        <button class="inline success" (click)="toggleOverlay2($event)">Añadir unidad</button>
                     </div>
                 </div>
                 <hr>
@@ -86,6 +86,51 @@
         <div class="fila derecha">
             <button class="inline" (click)="toggleOverlay($event)">Cancelar</button>
             <button class="m-l-1em" (click)="deleteCurso()">Eliminar</button>
+        </div>
+    </div>
+</div>
+<div class="overlay" *ngIf="showOverlay2">
+    <div class="card modal-xl">
+        <div class="fila space">
+            <h2>Nueva unidad</h2>
+            <img style="cursor: pointer" src="assets/x.svg" (click)="toggleOverlay2($event)">
+        </div>
+        <hr>
+        <form [formGroup]="itemsForm" (ngSubmit)="submitItem()">
+            <div class="fila">
+                <div class="col-66">
+                    <label>Título unidad</label>
+                    <input type="text" formControlName="titulo" #titulo>
+                </div>
+                <div class="col-33">
+                    <label>Duración (minutos)</label>
+                    <input type="number" formControlName="duracion">
+                </div>
+            </div>
+            <div class="fila">
+                <div class="col-100">
+                    <p>Una vez creada la unidad, acceda de nuevo para añadir el contenido.</p>
+                </div>
+            </div>
+            <div class="fila derecha">
+                <button class="inline" (click)="toggleOverlay2($event)">Cancelar</button>
+                <button class="m-l-1em">Añadir</button>
+            </div>
+        </form>
+    </div>
+</div>
+<div class="overlay" *ngIf="showOverlay3">
+    <div class="card">
+        <div class="fila space">
+            <img src="assets/alert-triangle.svg">
+            <img style="cursor: pointer" src="assets/x.svg" (click)="toggleOverlay3($event)">
+        </div>
+        <hr>
+        <div class="fila">
+            <h2>Por favor guarde primero el curso y acceda de nuevo para editar las nuevas unidades.</h2>
+        </div>
+        <div class="fila derecha">
+            <button (click)="toggleOverlay3($event)">Aceptar</button>
         </div>
     </div>
 </div>

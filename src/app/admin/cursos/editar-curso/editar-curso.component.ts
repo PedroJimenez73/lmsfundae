@@ -25,9 +25,13 @@ export class EditarCursoComponent implements OnInit {
   imageSrc: any;
   waiting = false;
   showOverlay = false;
+  showOverlay2 = false;
+  showOverlay3 = false;
   autores: Array<object> = [];
   fechaActual = new Date();
+  unidadesPre: number;
   unidades = [];
+  itemsForm: FormGroup;
 
   constructor(private fr: FormBuilder,
               private usuariosService: UsuariosService,
@@ -52,6 +56,8 @@ export class EditarCursoComponent implements OnInit {
     this.cursosService.getCurso(this.id)
     .subscribe( (res: any) => {
         this.curso = res.curso;
+        const udesPre = res.curso.unidades.length;
+        this.unidadesPre = udesPre
         this.imageSrc = this.urlImagenes + this.curso.imagen;
         this.unidades = this.curso.unidades;
         this.regForm.get('codigo').setValue(this.curso.codigo);
@@ -74,6 +80,21 @@ export class EditarCursoComponent implements OnInit {
     this.uploader.onBuildItemForm = (fileItem: any, form: any) => {
       form.append('nombre', this.regForm.get('codigo').value);
     };
+    this.itemsForm = this.fr.group({
+      titulo: ['', Validators.required],
+      duracion: ['', Validators.required]
+    });
+  }
+
+  editarUnidad(i) {
+    console.log(this.unidades.length);
+    console.log(this.unidadesPre);
+    console.log(this.unidades.length > this.unidadesPre)
+    if(this.unidades.length > this.unidadesPre) {
+      this.showOverlay3 = !this.showOverlay3;
+    } else {
+      this.router.navigate(['/admin/listado-cursos/editar-curso/' + this.id + '/editar-unidad/' + i]);
+    } 
   }
 
   submitReg() {
@@ -85,6 +106,7 @@ export class EditarCursoComponent implements OnInit {
       fechaInicio: this.regForm.get('fechaInicio').value,
       fechaFin: this.regForm.get('fechaFin').value,
       autor: this.regForm.get('autor').value,
+      unidades: this.unidades
     };
     this.waiting = true;
     this.cursosService.putCurso(this.id, curso)
@@ -98,6 +120,12 @@ export class EditarCursoComponent implements OnInit {
         this.scrollUp()
         this.estadoService.newMessage('Error de conexión, inténtelo más tarde', 'danger');
     });
+  }
+
+  submitItem() {
+    this.showOverlay2 = !this.showOverlay2;
+    this.unidades.push(this.itemsForm.value);
+    this.itemsForm.reset();
   }
 
   deleteCurso() {
@@ -136,6 +164,16 @@ export class EditarCursoComponent implements OnInit {
   toggleOverlay($event) {
     $event.preventDefault()
     this.showOverlay = !this.showOverlay;
+  }
+
+  toggleOverlay2($event) {
+    $event.preventDefault()
+    this.showOverlay2 = !this.showOverlay2;
+  }
+
+  toggleOverlay3($event) {
+    $event.preventDefault()
+    this.showOverlay3 = !this.showOverlay3;
   }
 
 }

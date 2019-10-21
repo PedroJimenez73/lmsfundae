@@ -20,7 +20,6 @@ export class BreadcrumbComponent implements OnInit {
   constructor(private router: Router) { 
     this.router.events.subscribe((event: Event) => {
       if (event instanceof NavigationStart) {
-        console.log(event.url);
         this.rutas = [];
         this.urls = [];
         this.breadcrumbs = [];
