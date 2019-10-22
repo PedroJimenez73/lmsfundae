@@ -54,9 +54,27 @@ export class EstadoService {
 
   cargarCredenciales() {
     if (localStorage.getItem('usuario')) {
-      this.usuario = JSON.parse(localStorage.getItem('usuario'));
-      this.loggedIn.next({logged: true});
-      this.mensajeIn.next({mensaje: `Bienvenid@ de nuevo ${this.usuario.nombre}`, tipo: 'success', extra: this.usuario.nombre});
+      let usuario = JSON.parse(localStorage.getItem('usuario'));
+      return this.http.get(this.urlLogin + '?token=' + usuario.token).pipe(
+        map( (res: any) => {
+          return res;
+        })
+      ).subscribe((res: any)=>{
+        console.log(res);
+        this.usuario = JSON.parse(localStorage.getItem('usuario'));
+        this.loggedIn.next({logged: true});
+        this.mensajeIn.next({mensaje: `Bienvenid@ de nuevo ${this.usuario.nombre}`, tipo: 'success', extra: this.usuario.nombre});
+      },(err: any)=>{
+        console.log(err);
+        this.usuario = {
+          objectId: '',
+          nombre: '',
+          apellidos: '',
+          rol: ''
+        };
+        this.loggedIn.next({logged: false});
+        this.router.navigate(['/']);
+      });
     } else {
       this.usuario = {
         objectId: '',
@@ -65,6 +83,7 @@ export class EstadoService {
         rol: ''
       };
       this.loggedIn.next({logged: false});
+      this.router.navigate(['/']);
     }
   }
 

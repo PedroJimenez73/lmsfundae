@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { CursosService } from 'src/app/servicios/cursos.service';
+import { environment } from 'src/environments/environment';
 
 declare var window: any;
 
@@ -13,6 +14,7 @@ export class CursoComponent implements OnInit {
 
   id: string;
   unidades: any;
+  urlUnidades = environment.urlUnidades;
 
   myWindow: any;
   alumno = {
@@ -38,7 +40,7 @@ export class CursoComponent implements OnInit {
   }
   loadScorm(index) {
     window.API_1484_11.loadFromJSON(this.alumno);
-    this.myWindow = window.open("http://localhost:5500/unidades/" + this.id + index + "/publicacion/index.html", "myWindow", "width=1240,height=720");
+    this.myWindow = window.open(this.urlUnidades + this.id + index + "/publicacion/index.html", "myWindow", "width=1240,height=720");
     this.myWindow.addEventListener("beforeunload",() => {
         this.alumno.location = window.API_1484_11.cmi.location;
         window.API_1484_11 = new window.simplifyScorm.ScormAPI2004();
